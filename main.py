@@ -61,15 +61,18 @@
 
 from typing import Annotated
 
-from fastapi import FastAPI, Depends, HTTPException, Body, Path
+from fastapi import FastAPI, Body
 from pydantic import BaseModel, EmailStr
 
 import uvicorn
+
+from items_views import router as items_router
+from users.views import router as users_router
 app = FastAPI()
+app.include_router(items_router)
+app.include_router(users_router)
 
 
-class CreateUser(BaseModel):
-    email: EmailStr
 @app.get("/")
 def hello():
     return {
@@ -82,14 +85,6 @@ def hello(name: str = "World"):
     name = name.strip().title()
     return {"message": f"hello,{name}"}
 
-
-@app.post("/users")
-def create_user(email: EmailStr = Body):
-    return{
-        "message": "success",
-        "email": email,
-    }
-
 @app.get("/calc")
 def calculator(a: float, b:float):
     return{
@@ -99,26 +94,7 @@ def calculator(a: float, b:float):
     }
 
 
-@app.get("/items")
-def list_items():
-    return [
-        "item1",
-        "item2",
-    ]
 
-
-@app.get("/items/{item_id}")
-def get_item_by_id(item_id: int = Annotated[int, Path(ge=1, lt=1_000_000)]):
-    return {
-        "item":{
-            "id":item_id,
-        },
-    }
-
-
-@app.get("/item/latest")
-def get_latest_item():
-    return {"item": {"id": "0", "name": "Latest"}}
 
 
 if __name__ == "__main__":
