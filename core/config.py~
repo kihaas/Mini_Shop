@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     secret_key: str
     DEBUG: bool = False
     APP_NAME: str
-    # db_echo: bool = False #должен быть false режим отладки
+    # db_echo: bool = False #должен быть false
     db_echo: bool = True
 
     model_config = {
