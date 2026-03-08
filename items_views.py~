@@ -25,6 +25,3 @@ def get_item_by_id(item_id: int = Annotated[int, Path(ge=1, lt=1_000_000)]):
 @router.get("/latest")
 def get_latest_item():
     return {"item": {"id": "0", "name": "Latest"}}
-
-
-#.

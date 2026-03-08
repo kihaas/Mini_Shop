@@ -9,3 +9,4 @@ class Product(Base):
     name: Mapped[str]  # mapped чтобы скать что это колонки
     description: Mapped[str]
     price: Mapped[int]
+#.
