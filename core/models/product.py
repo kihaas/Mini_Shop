@@ -6,7 +6,9 @@ from .base import Base
 class Product(Base):
     __tablename__ = "products"
 
-    name: Mapped[str]  # mapped чтобы скать что это колонки
+    name: Mapped[str]  # mapped чтобы скaзать что это колонки
     description: Mapped[str]
     price: Mapped[int]
-#.
+
+
+# .
