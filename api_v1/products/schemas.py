@@ -7,7 +7,11 @@ class ProductBase(BaseModel):
     price: int
 
 
+
 class ProductCreate(BaseModel):
+    pass
+
+class ProductUpdate(ProductCreate):
     pass
 
 
