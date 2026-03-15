@@ -38,3 +38,7 @@ async def get_product(
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"Product {product_id} not found",
     )
+
+@router.put("/{product_id}")
+async def update_product():
+    pass
